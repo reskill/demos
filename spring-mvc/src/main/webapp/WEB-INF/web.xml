@@ -1,0 +1,36 @@
+<!-- webapp/WEB-INF/web.xml -->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>To do List</display-name>
+	
+	<description>
+		This is sample Spring MVC application. 
+		This is deployed in embaded tomcat configured in project pom.xml
+		To Run: Create a Maven launch confuguration with Goal: tomcat:run
+		This will start tomcat on 8080 port
+		Hit http://localhost:8080/myapp/login and the Server redirect to LoginController
+		which have a annotated method with RequestMapping /login
+	</description>
+
+	<welcome-file-list>
+		<welcome-file>view/login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+  		<servlet-name>dispatcher</servlet-name>
+        	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        	<init-param>
+        		<param-name>contextConfigLocation</param-name>
+        		<param-value>/WEB-INF/dispatcher-servlet-context.xml</param-value>
+        	</init-param>
+			<load-on-startup>1</load-on-startup>
+  	</servlet>
+  
+  <servlet-mapping>
+ 	<servlet-name>dispatcher</servlet-name>
+        <url-pattern>/myapp/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>
